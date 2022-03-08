@@ -1,0 +1,27 @@
+name: Deployment - Booklist React
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Checkout
+        uses: actions/checkout@v2
+      - name : Deploy Docker Using SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/project/booklist/react
+            git stash
+            git pull --no-edit origin main
+            docker-compose down -v
+            docker-compose build
+            docker-compose up -d
