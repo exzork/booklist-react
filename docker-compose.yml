@@ -1,7 +1,16 @@
 version: '3.8'
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: serve -s build
     volumes:
       - .:/booklist-react
+    environment:
+      - VIRTUAL_HOST=booklist-react.exzork.me
+      - LETSENCRYPT_HOST=booklist-react.exzork.me
+      - LETSENCRYPT_EMAIL=muhammadeko.if@gmail.com
+networks:
+  default :
+    name: nginx-proxy
