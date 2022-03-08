@@ -11,8 +11,6 @@ services:
       - VIRTUAL_HOST=booklist-react.exzork.me
       - LETSENCRYPT_HOST=booklist-react.exzork.me
       - LETSENCRYPT_EMAIL=muhammadeko.if@gmail.com
-    ports:
-      - "443:443"
 networks:
   default :
     name: nginx-proxy
