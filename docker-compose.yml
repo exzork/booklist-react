@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: serve -s build
+    command: bash -c "npm run build && serve -s build"
     volumes:
       - .:/booklist-react
     environment:
