@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/booklist-react
+      - /booklist-react/node_modules
+      - /booklist-react/build
     environment:
       - VIRTUAL_HOST=booklist-react.exzork.me
       - LETSENCRYPT_HOST=booklist-react.exzork.me
