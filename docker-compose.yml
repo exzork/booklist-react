@@ -1,9 +1,11 @@
 version: '3.8'
 services:
-  web:
+  exzork_booklist_react:
+    container_name: exzork_booklist_react
     build:
       context: .
       dockerfile: Dockerfile
+    command: serve -s build
     volumes:
       - .:/booklist-react
     environment:
